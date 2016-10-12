@@ -6,8 +6,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
   </head>
   <body>
+    <div ng-controller="RoleController">
+      <h2>Role Stuff {{ roleCounter }}</h2>
+      <p>{{ allRoles }}</p>
+    </div>
+
     <div ng-controller="FamilyController as family">
-      <h2>Family Stuff</h2>
+      <h2>Family Stuff ({{ family.people.length }})</h2>
       <ul ng-repeat="person in family.people">
         <li>{{person.name}} - {{person.role}}</li>
       </ul>
@@ -19,7 +24,6 @@
         <button type="button" name="button" ng-click="family.addPerson(family.personName, familiy.personRole)">add</button>
       </div>
     </div>
-
     <script src="app.js"></script>
     <script src="controllers.js"></script>
   </body>

@@ -3,9 +3,10 @@
 
   const app = angular.module('FamilyApp')
 
-  app.controller('FamilyController', FamilyController)
+  app.controller('FamilyController', FamilyController);
+  app.controller('RoleController', RoleController);
 
-  function FamilyController () {
+  function FamilyController ($rootScope) {
     this.person = {
       name: '',
       role: ''
@@ -21,10 +22,20 @@
 
     this.addPerson = function (name, role) {
       this.people.push(this.person)
+      $rootScope.allRoles += `, ${this.person.role}`
+      $rootScope.roleCounter += 1
       this.person = {
         name: '',
         role: ''
       }
     }
   }
+
+  function RoleController ($rootScope) {
+    $rootScope.allRoles = 'Mother, Son';
+    $rootScope.roleCounter = 2
+
+  }
+
+
 }());
